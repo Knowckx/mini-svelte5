@@ -1,7 +1,36 @@
 <!-- src\routes\+page.svelte -->
 <script lang="ts">
+    import infa from "infa-s5";
+
+    console.log(`ver: `, infa.version)
 </script>
 
-<h1>mini-svelte5 Hello World 1123</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<infa.Tip.UI />
 
+
+<div class="p-8">
+  <infa.Button 
+    txt="点击提示" 
+    onclick={() => {
+      infa.Tip.success("操作成功！", "提示");
+    }}
+  />
+  
+  <infa.Button 
+    txt="错误提示" 
+    variant="destructive"
+    class="ml-4"
+    onclick={() => {
+      infa.Tip.error("出错了！");
+    }}
+  />
+  
+  <infa.Button 
+    txt="普通提示" 
+    variant="outline"
+    class="ml-4"
+    onclick={() => {
+      infa.Tip.info("这是一条消息");
+    }}
+  />
+</div>
