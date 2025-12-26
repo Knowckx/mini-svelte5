@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* 手动添加这一行来扫描 infa-s5 的组件 */
+@source "../../node_modules/infa-s5/dist";
+
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));

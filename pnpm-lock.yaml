@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      infa-s5:
-        specifier: file:.yalc/infa-s5
-        version: file:.yalc/infa-s5(@lucide/svelte@0.562.0(svelte@5.46.1))(mode-watcher@1.1.0(svelte@5.46.1))(svelte-sonner@1.0.7(svelte@5.46.1))(svelte@5.46.1)
+      mode-watcher:
+        specifier: ^1.1.0
+        version: 1.1.0(svelte@5.46.1)
       svelte-sonner:
         specifier: ^1.0.7
         version: 1.0.7(svelte@5.46.1)

@@ -62,6 +62,10 @@ export default defineConfig({
             }
         ),
     ],
+    // ✅ 必须 - 禁用客户端预构建本地包的缓存
+    optimizeDeps: {
+        exclude: ['infa-s5']
+    },
     server: {
         https: {},
         port: 23001,

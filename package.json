@@ -5,11 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"build": "vite build"
 	},
 	"devDependencies": {
 		"@lucide/svelte": "^0.562.0",
@@ -34,6 +30,7 @@
 	},
 	"dependencies": {
 		"infa-s5": "file:.yalc/infa-s5",
+		"mode-watcher": "^1.1.0",
 		"svelte-sonner": "^1.0.7"
 	}
 }
