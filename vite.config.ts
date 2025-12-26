@@ -12,13 +12,11 @@ export default defineConfig({
         SvelteKitPWA(
             {
                 disable: process.env.NODE_ENV === 'development', // 生产环境才启用 PWA
-                registerType: 'autoUpdate', // autoUpdate/ prompt 模式下，当有新内容时，会触发 update 事件，允许我们在 UI 上弹窗提示用户
-                strategies: 'generateSW', // 自动生成 SW，如果需要极度定制 SW 逻辑，改为 'injectManifest'
+                registerType: 'prompt', // prompt 模式：有新内容时触发事件，允许我们在 UI 上弹窗提示用户手动更新
                 includeAssets: ['pwa-512x512.png'],
-                srcDir: 'src',
-                filename: 'service-worker.js',
                 workbox: {
-                    globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
+                    // 只匹配 client 目录，不匹配 prerendered 目录（项目未使用预渲染）
+                    globPatterns: ['client/**/*.{js,css,html,ico,png,svg,webp}'],
                     navigateFallback: null,
                     cleanupOutdatedCaches: true,
                     runtimeCaching: [
@@ -30,7 +28,6 @@ export default defineConfig({
                                 cacheName: 'pages-cache',
                                 expiration: {
                                     maxEntries: 50,
-                                    maxAgeSeconds: 365 * 24 * 60 * 60 * 100 // 100年才过期
                                 },
                                 // 允许缓存 200 响应
                                 cacheableResponse: {
@@ -38,23 +35,10 @@ export default defineConfig({
                                 }
                             }
                         },
-                        {
-                            // 缓存 API 请求或其他动态数据 (可选，根据你需求)
-                            // 匹配所有 /api 开头的请求
-                            urlPattern: ({ url }) => url.pathname.startsWith('/api'),
-                            handler: 'StaleWhileRevalidate',
-                            options: {
-                                cacheName: 'api-cache',
-                                cacheableResponse: {
-                                    statuses: [0, 200]
-                                }
-                            }
-                        }
                     ]
                 },
                 kit: {
-                    includeVersionFile: true, // 适配 SvelteKit 的特殊构建输出目录
-
+                    includeVersionFile: true // 适配 SvelteKit 的特殊构建输出目录
                 },
                 manifest: {
                     name: 'mini-svelte5',
@@ -63,9 +47,6 @@ export default defineConfig({
                     theme_color: '#ffffff',
                     background_color: '#ffffff',
                     display: 'standalone',
-                    orientation: 'portrait',
-                    scope: '/',
-                    start_url: '/',
                     icons: [
                         {
                             src: 'pwa-192x192.png',
