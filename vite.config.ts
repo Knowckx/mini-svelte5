@@ -13,28 +13,46 @@ export default defineConfig({
             disable: process.env.NODE_ENV === 'development', // 生产环境才启用 PWA
             registerType: 'prompt', // prompt 模式：有新内容时触发事件，允许我们在 UI 上弹窗提示用户手动更新
             includeAssets: ['pwa-512x512.png'],
+            strategies: 'generateSW', // 使用 generateSW 策略
             workbox: {
-                // 要缓存的资源 | 只匹配 client 目录，不匹配 prerendered 目录（项目未使用预渲染）
-                globPatterns: ['client/**/*.{js,css,html,ico,png,svg,webp}'],
+                // 预缓存所有静态资源（不包括 html，因为 SvelteKit 页面是动态生成的）
+                globPatterns: ['**/*.{js,css,ico,png,svg,webp,woff,woff2,ttf,eot,json}'],
+                // 关键：禁用 navigateFallback，避免 non-precached-url 错误
                 navigateFallback: null,
                 // 自动清理过期缓存。新版本部署后，自动删除旧版本的缓存
                 cleanupOutdatedCaches: true,
+                // 运行时缓存策略 - 离线优先
                 runtimeCaching: [
                     {
-                        // 匹配所有“页面导航”请求 (访问 /, /about 等)
+                        // 页面导航请求 - 使用 StaleWhileRevalidate（立即返回缓存，后台更新）
                         urlPattern: ({ request }) => request.mode === 'navigate',
                         handler: 'StaleWhileRevalidate',
                         options: {
                             cacheName: 'pages-cache',
                             expiration: {
                                 maxEntries: 50,
+                                maxAgeSeconds: 365 * 24 * 60 * 60 * 99 // 99年
                             },
-                            // 允许缓存 200 响应
-                            cacheableResponse: {
+                            cacheableResponse: { // 允许缓存 200 响应
                                 statuses: [0, 200]
                             }
                         }
                     },
+                    {
+                        // 静态资源 - 使用 CacheFirst（缓存优先，离线也能工作）
+                        urlPattern: /\.(?:js|css|woff2?|ttf|eot|png|jpg|jpeg|gif|svg|ico|webp)$/,
+                        handler: 'CacheFirst',
+                        options: {
+                            cacheName: 'static-resources-cache',
+                            expiration: {
+                                maxEntries: 200,
+                                maxAgeSeconds: 365 * 24 * 60 * 60 * 99 // 99年
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200]
+                            }
+                        }
+                    }
                 ]
             },
             kit: {
