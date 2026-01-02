@@ -8,7 +8,7 @@
 		updateServiceWorker // 调用此函数来激活新 SW
 	} = useRegisterSW({
 		// SW 注册成功时的回调
-		onRegisteredSW(swUrl, registration) {
+		onRegisteredSW(swUrl: string, registration: ServiceWorkerRegistration | undefined) {
 			console.log('[PWA] SW registered:', swUrl);
 			// 定期检查更新 (每 60 秒)
 			if (registration) {
@@ -19,7 +19,7 @@
 			}
 		},
 		// SW 注册失败
-		onRegisterError(error) {
+		onRegisterError(error: any) {
 			console.error('[PWA] SW registration error:', error);
 		}
 	});
