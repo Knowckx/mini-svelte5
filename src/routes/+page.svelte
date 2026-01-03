@@ -1,7 +1,7 @@
 <!-- src\routes\+page.svelte -->
 <script lang="ts">
     import infa from "infa-s5";
-    console.log(infa.version)
+    console.log(`Infa 版本 ${infa.version}`);
 </script>
 
 <div class="p-8">
