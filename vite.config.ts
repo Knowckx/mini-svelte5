@@ -70,7 +70,7 @@ export default defineConfig({
                 display: 'standalone', // 显示模式（无浏览器 UI，像原生 App）
                 icons: [
                     {
-                        src: 'pwa-192x192.png',
+                        src: 'pwa-512x512.png',
                         sizes: '192x192',
                         type: 'image/png'
                     },
