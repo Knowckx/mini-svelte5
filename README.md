@@ -1,23 +1,37 @@
 # 快速初始化新项目
+
+#### 克隆模板
 ```bash
 pnpm dlx degit Knowckx/mini-svelte5 yourAppName
-cd yourAppName
-pnpm install
+```
+- 用 Knowckx/mini-svelte5 这个仓库当模板
+- 把模板文件拷进去，但不带原仓库的 Git 历史
 
+
+#### 初始化模板
+1. 修改 package.json 里的包名
+2. 上层的 pnpm-workspace.yaml 加上新项目
+3. pnpm install
+4. 改一下端口 `vite.config.ts`  preview.port
+
+#### git
+
+```bash
 # 初始化新的 git 仓库
 git init
 git add .
 git commit -m "Initial commit from template"
-git remote add origin your-repo-url
-git push -u origin main
+# 然后 点击vscode的发布按钮 可以直接推私人库
 ```
+
+
+
 
 # 启动
 
 ```bash
 pnpm dev
 
-# 测试pwa模式
+# 预览生产构建
 pnpm run build && pnpm preview --host
 ```
-

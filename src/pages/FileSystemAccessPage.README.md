@@ -2,7 +2,7 @@
 
 目标路由：`/file-system-access`
 
-页面文件：`+page.svelte`
+页面文件：`FileSystemAccessPage.svelte`
 
 ## 教学目标
 

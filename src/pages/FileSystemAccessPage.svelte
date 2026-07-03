@@ -323,9 +323,18 @@
 <main class="min-h-screen bg-background px-6 py-8 text-foreground">
 	<div class="mx-auto flex max-w-6xl flex-col gap-6">
 		<header class="flex flex-col gap-3 border-b pb-5">
-			<div>
-				<p class="text-sm text-muted-foreground">浏览器本地文件能力测试</p>
-				<h1 class="text-3xl font-semibold">File System Access API</h1>
+			<div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+				<div>
+					<p class="text-sm text-muted-foreground">浏览器本地文件能力测试</p>
+					<h1 class="text-3xl font-semibold">File System Access API</h1>
+				</div>
+				<a
+					href="/"
+					data-app-link
+					class="inline-flex h-9 items-center justify-center rounded border px-3 text-sm hover:bg-accent hover:text-accent-foreground"
+				>
+					返回首页
+				</a>
 			</div>
 			<div class="flex flex-wrap gap-2 text-sm">
 				<span class="rounded border px-2 py-1">安全上下文：{support.secureContext ? '可用' : '不可用'}</span>
