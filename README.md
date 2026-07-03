@@ -1,15 +1,14 @@
 # 快速初始化新项目
 
 #### 克隆模板
+把 mini-svelte5 这个仓库当模板, 且不带原仓库的 Git 历史
 ```bash
 pnpm dlx degit Knowckx/mini-svelte5 yourAppName
 ```
-- 用 Knowckx/mini-svelte5 这个仓库当模板
-- 把模板文件拷进去，但不带原仓库的 Git 历史
 
 
 #### 初始化模板
-1. 修改 package.json 里的包名
+1. 全局搜索并且替换 mini-svelte5
 2. 上层的 pnpm-workspace.yaml 加上新项目
 3. pnpm install
 4. 改一下端口 `vite.config.ts`  preview.port
