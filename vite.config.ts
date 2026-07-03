@@ -6,13 +6,18 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
+    publicDir: 'static',
     plugins: [
         svelte(),
         tailwindcss(),
         mkcert(),
         VitePWA({
             registerType: 'prompt',
-            includeAssets: ['pwa-512x512.png'],
+            includeAssets: [
+                'pwa-192x192.png',
+                'pwa-512x512.png',
+                'placeholder-1024.png'
+            ],
             manifest: {
                 name: 'mini-svelte5',
                 short_name: 'mini-svelte5',
@@ -24,8 +29,13 @@ export default defineConfig({
                 background_color: '#ffffff',
                 icons: [
                     {
-                        src: 'pwa-512x512.png',
+                        src: 'pwa-192x192.png',
                         sizes: '192x192',
+                        type: 'image/png'
+                    },
+                    {
+                        src: 'pwa-512x512.png',
+                        sizes: '512x512',
                         type: 'image/png'
                     },
                     {
@@ -51,7 +61,10 @@ export default defineConfig({
             },
             workbox: {
                 navigateFallback: '/index.html',
-                cleanupOutdatedCaches: true
+                cleanupOutdatedCaches: true,
+                clientsClaim: false,
+                skipWaiting: false,
+                globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest,woff2}']
             }
         }),
     ],
@@ -63,10 +76,6 @@ export default defineConfig({
     // ✅ 必须 - 禁用客户端预构建本地包的缓存
     optimizeDeps: {
         exclude: ['infa-s5']
-    },
-    // ✅ 必须 - 处理 SSR 时的本地包
-    ssr: {
-        noExternal: ['infa-s5']
     },
     server: {
         https: {},
