@@ -2,6 +2,7 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import mkcert from 'vite-plugin-mkcert';
+import { VitePWA } from 'vite-plugin-pwa';
 import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
@@ -9,6 +10,50 @@ export default defineConfig({
         svelte(),
         tailwindcss(),
         mkcert(),
+        VitePWA({
+            registerType: 'prompt',
+            includeAssets: ['pwa-512x512.png'],
+            manifest: {
+                name: 'mini-svelte5',
+                short_name: 'mini-svelte5',
+                description: 'mini-svelte5',
+                display: 'standalone',
+                start_url: '/',
+                scope: '/',
+                theme_color: '#ffffff',
+                background_color: '#ffffff',
+                icons: [
+                    {
+                        src: 'pwa-512x512.png',
+                        sizes: '192x192',
+                        type: 'image/png'
+                    },
+                    {
+                        src: 'pwa-512x512.png',
+                        sizes: '512x512',
+                        type: 'image/png',
+                        purpose: 'any maskable'
+                    }
+                ],
+                screenshots: [
+                    {
+                        src: 'placeholder-1024.png',
+                        sizes: '1024x1024',
+                        type: 'image/png',
+                        form_factor: 'wide'
+                    },
+                    {
+                        src: 'placeholder-1024.png',
+                        sizes: '1024x1024',
+                        type: 'image/png'
+                    }
+                ]
+            },
+            workbox: {
+                navigateFallback: '/index.html',
+                cleanupOutdatedCaches: true
+            }
+        }),
     ],
     resolve: {
         alias: {
