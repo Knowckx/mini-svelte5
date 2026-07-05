@@ -3,10 +3,9 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import mkcert from 'vite-plugin-mkcert';
 import { VitePWA } from 'vite-plugin-pwa';
-import { fileURLToPath, URL } from 'node:url';
+import { resolve } from 'node:path';
 
 export default defineConfig({
-    publicDir: 'static',
     plugins: [
         svelte(),
         tailwindcss(),
@@ -70,7 +69,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            $lib: fileURLToPath(new URL('./src/lib', import.meta.url))
+            '@': resolve(process.cwd(), 'src')
         }
     },
     // ✅ 必须 - 禁用客户端预构建本地包的缓存

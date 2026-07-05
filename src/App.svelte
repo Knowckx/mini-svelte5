@@ -1,7 +1,7 @@
 <script lang="ts">
 	import infa from 'infa-s5';
-	import favicon from '$lib/assets/favicon.svg';
-	import PWAUpdatePrompt from '$lib/components/PWAUpdatePrompt.svelte';
+	import favicon from '@/lib/assets/favicon.svg';
+	import PWAUpdatePrompt from '@/lib/components/PWAUpdatePrompt.svelte';
 	import HomePage from './pages/HomePage.svelte';
 	import FileSystemAccessPage from './pages/FileSystemAccessPage.svelte';
 
