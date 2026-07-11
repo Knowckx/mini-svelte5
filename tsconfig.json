@@ -1,9 +1,15 @@
 {
-	"compilerOptions": {
-		"paths": {
-			"@": ["./src"],
-			"@/*": ["./src/*"]
-		}
-	},
-	"include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.svelte", "vite.config.ts"]
+    "compilerOptions": {
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.d.ts",
+        "src/**/*.ts",
+        "src/**/*.svelte",
+        "vite.config.ts"
+    ]
 }
