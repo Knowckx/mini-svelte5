@@ -13,9 +13,7 @@ export default defineConfig({
         VitePWA({
             registerType: 'prompt',
             includeAssets: [
-                'pwa-192x192.png',
-                'pwa-512x512.png',
-                'placeholder-1024.png'
+                'pwa-icon.png'
             ],
             manifest: {
                 name: 'mini-svelte5',
@@ -28,33 +26,16 @@ export default defineConfig({
                 background_color: '#ffffff',
                 icons: [
                     {
-                        src: 'pwa-192x192.png',
-                        sizes: '192x192',
+                        src: 'pwa-icon.png',
+                        sizes: '256x256',
                         type: 'image/png'
-                    },
-                    {
-                        src: 'pwa-512x512.png',
-                        sizes: '512x512',
-                        type: 'image/png'
-                    },
-                    {
-                        src: 'pwa-512x512.png',
-                        sizes: '512x512',
-                        type: 'image/png',
-                        purpose: 'any maskable'
                     }
                 ],
                 screenshots: [
                     {
-                        src: 'placeholder-1024.png',
-                        sizes: '1024x1024',
+                        src: 'pwa-icon.png',
+                        sizes: '256x256',
                         type: 'image/png',
-                        form_factor: 'wide'
-                    },
-                    {
-                        src: 'placeholder-1024.png',
-                        sizes: '1024x1024',
-                        type: 'image/png'
                     }
                 ]
             },
@@ -76,12 +57,12 @@ export default defineConfig({
     optimizeDeps: {
         exclude: ['infa-s5']
     },
-    server: {
+    server: { // 开发地址
         https: {},
         port: 23001,
         host: true,
     },
-    preview: {
+    preview: { // 生产的pwa地址
         port: 33001,
         host: true
     },
