@@ -5,8 +5,9 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview"
+        "build": "vite build",
+        "preview": "vite preview",
+        "pwa": "pnpm build && pnpm preview"
 	},
 	"devDependencies": {
 		"vite": "^8.1.3",
