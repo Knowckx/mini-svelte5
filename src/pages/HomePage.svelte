@@ -1,5 +1,5 @@
 <script lang="ts">
-	import infa from 'infa-s5';
+	import infa from '@knowckx/infa-s5';
 
 	console.log(`Infa 版本 ${infa.version}`);
 </script>

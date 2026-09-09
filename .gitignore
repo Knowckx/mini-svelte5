@@ -30,3 +30,6 @@ yalc.lock
 # pnpm
 dev-dist
 dist
+
+# ai
+/Agents.md

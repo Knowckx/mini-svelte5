@@ -23,14 +23,11 @@ git commit -m "Initial commit from template"
 # 然后 点击vscode的发布按钮 可以直接推私人库
 ```
 
-
-
-
 # 启动
 
 ```bash
 pnpm dev
 
 # 预览生产构建
-pnpm run build && pnpm preview --host
+pnpm pwa
 ```

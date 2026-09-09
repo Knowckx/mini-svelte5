@@ -22,9 +22,8 @@
 },
 
 "dependencies": {
-    "infa-s5": "workspace:*",
+    "@knowckx/infa-s5": "workspace:*",
 }
-
 
 
 

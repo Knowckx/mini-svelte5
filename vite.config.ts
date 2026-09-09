@@ -55,7 +55,7 @@ export default defineConfig({
     },
     // ✅ 必须 - 禁用客户端预构建本地包的缓存
     optimizeDeps: {
-        exclude: ['infa-s5']
+        exclude: ['@knowckx/infa-s5']
     },
     server: { // 开发地址
         https: {},
