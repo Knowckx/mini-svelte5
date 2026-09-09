@@ -13,7 +13,7 @@ export default defineConfig({
         VitePWA({
             registerType: 'prompt',
             includeAssets: [
-                'pwa-icon.png'
+                'apple-touch-icon.png'
             ],
             manifest: {
                 name: 'mini-svelte5',
@@ -26,16 +26,14 @@ export default defineConfig({
                 background_color: '#ffffff',
                 icons: [
                     {
-                        src: 'pwa-icon.png',
-                        sizes: '256x256',
+                        src: 'pwa-192x192.png',
+                        sizes: '192x192',
                         type: 'image/png'
-                    }
-                ],
-                screenshots: [
+                    },
                     {
-                        src: 'pwa-icon.png',
-                        sizes: '256x256',
-                        type: 'image/png',
+                        src: 'pwa-512x512.png',
+                        sizes: '512x512',
+                        type: 'image/png'
                     }
                 ]
             },
