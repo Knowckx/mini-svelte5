@@ -33,12 +33,4 @@
 	>
 		普通提示
 	</infa.Button>
-
-	<a
-		href="/file-system-access"
-		data-app-link
-		class="ml-4 inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-	>
-		File System Access API
-	</a>
 </main>
