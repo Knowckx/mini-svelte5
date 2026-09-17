@@ -3,3 +3,7 @@
 
 /* 手动添加这一行来扫描 infa-s5 的组件 | 推荐使用相对路径 */
 @source "../node_modules/@knowckx/infa-s5/dist";
+
+:root {
+	--infa-pwa-prompt-bottom: 5.75rem;
+}

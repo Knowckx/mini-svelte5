@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { Bell, House, Plus, Puzzle, User } from '@lucide/svelte';
-	import infa from '@knowckx/infa-s5';
-	import BottomNavigator, { type Tab } from '@/lib/components/BottomNavigator.svelte';
-	import PWAUpdatePrompt from '@/lib/components/PWAUpdatePrompt.svelte';
+	import infa, { BottomNavigator, type BottomNavigationTab } from '@knowckx/infa-s5';
+	import PWAUpdateController from '@/lib/components/PWAUpdateController.svelte';
 	import FeaturePage from './pages/FeaturePage.svelte';
 	import HomePage from './pages/HomePage.svelte';
 
-	const tabs: Tab[] = [
+	const tabs: BottomNavigationTab[] = [
 		{
 			label: '首页',
 			component: HomePage,
@@ -37,6 +36,6 @@
 	}
 </script>
 
-<PWAUpdatePrompt />
+<PWAUpdateController />
 <infa.Tip.UI />
 <BottomNavigator {tabs} fabIcon={Plus} onFabClick={openPublisher} />
